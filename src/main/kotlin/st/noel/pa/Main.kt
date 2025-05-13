@@ -10,7 +10,7 @@ import io.ktor.server.routing.*
 
 fun main() {
     println("olá mundo!")
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+    embeddedServer(Netty, port = 8087, host = "0.0.0.0") {
         //install(CallLogging)
 
         routing {
