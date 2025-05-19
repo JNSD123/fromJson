@@ -1,28 +1,23 @@
 package org.example.st.noel.pa
 
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import io.ktor.server.application.*
-import io.ktor.server.response.*
-import io.ktor.server.request.*
-import io.ktor.server.routing.*
-//import io.ktor.server.plugins.callloging.*
+
+import st.noel.pa.api.Controllers.UserController
+import st.noel.pa.api.Framework.Core.ControllerRegistry
+import st.noel.pa.api.Server.AppServer
 
 fun main() {
-    println("olá mundo!")
-    embeddedServer(Netty, port = 8087, host = "0.0.0.0") {
-        //install(CallLogging)
 
-        routing {
-            get("/") {
-                call.respondText("Hello from Ktor!")
-            }
-
-            get("/json") {
-                call.respond(mapOf("message" to "Hello, JSON!"))
-            }
-        }
-    }.start(wait = true)
+    ControllerRegistry.register(UserController())
+    /*val path = "/api/users/ative"
+    val queryParams = emptyMap<String, String>()
+    val result = ControllerRegistry1.resolveWithParams(path, queryParams)
+    if (result != null) {
+        val json = result.toJsonString() // <-- precisas de converter JsonValue em String!
+        //sendHttpResponse(200, json) // esta parte depende do teu motor HTTP
+    } else {
+        //sendHttpResponse(404, "Not Found")
+    }*/
+    AppServer.start(8087)
 }
 
 
