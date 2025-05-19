@@ -1,0 +1,88 @@
+@startuml
+
+' Pacote Framework.Core
+
+class ControllerRegistry {
+    - routeMap: MutableList<RegisteredRoute>
+    - RegisteredRoute
+    + register(vararg controllers: Any)
+    + resolveWithParams(path: String, queryParams: Map<String,String>): JsonValue?
+}
+
+class RegisteredRoute {
+    - rawPath: String
+    - regex: Regex
+    - paramNames: List<String>
+    - controller: Any
+    - method: KFunction<*>
+}
+
+ControllerRegistry *-- RegisteredRoute : uses
+
+' Pacote Server
+class AppServer {
+    + start(port: Int = 8087)
+}
+
+' Pacote Controllers
+
+class UserController {
+    - list_user: List<User>
+    + demo(): List<Int>
+    + getAllUsers(): List<User>
+    + getUserStatusAtive(): JsonArray
+    + obj(): Pair<String,String>
+    + path(pathvar: String): String
+    + args(n: Int, text: String): Map<String,String>
+}
+
+class User {
+    + name: String
+    + credits: Int
+    + status: Boolean
+}
+
+class Wrapper {
+    + value: Int
+}
+
+class Main{
+ + main()
+}
+
+
+' Annotations
+
+annotation RestController {
+    + path: String = ""
+}
+annotation GetMapping {
+    + path: String = ""
+}
+annotation RequestParam {
+    + name: String = ""
+}
+annotation PathVariable {
+    + name: String = ""
+}
+
+
+' Relações entre ControllerRegistry e UserController
+ControllerRegistry ..> UserController : register
+UserController ..> User : uses
+UserController ..> Wrapper : uses
+
+' Relações entre ControllerRegistry e annotations
+ControllerRegistry ..> RestController : findsAnnotation
+ControllerRegistry ..> GetMapping : findsAnnotation
+UserController ..> RestController : annotated with
+UserController ..> GetMapping : annotated with
+UserController ..> RequestParam : annotated with
+UserController ..> PathVariable : annotated with
+
+Main --> ControllerRegistry : register
+Main --> AppServer : start() call
+
+AppServer ..> ControllerRegistry : resolveWithParams
+
+@enduml

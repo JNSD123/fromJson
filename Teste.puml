@@ -1,0 +1,99 @@
+@startuml
+
+JsonValue <|-- JsonString
+JsonValue <|-- JsonNumber
+JsonValue <|-- JsonBoolean
+JsonValue <|-- JsonNull
+JsonValue <|-- JsonObject
+JsonValue <|-- JsonArray
+JsonValue ...> JsonVisitor: accept(visitor)
+
+interface JsonValue{
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+
+interface JsonVisitor{
+    + visit(obj: JsonObject)
+    + visit(arr: JsonArray)
+    + visit(str: JsonString)
+    + visit(numb: JsonNumber)
+    + visit(bool: JsonBoolean)
+    + visit(nul: JsonNull)
+    + visitProperty(str: String, value: JsonValue)
+}
+
+class JsonArray{
+    - elements: MutableList<JsonValue>
+    - size: Int
+    + iterator(): Iterator<JsonValue>
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+    + get(index: Int): JsonValue
+    + addElmentArray(value: JsonValue)
+    + filterArray(value: (JsonValue) -> Boolean): JsonArray
+    + <T: JsonValue> map(transform: (JsonValue)->T): JsonArray
+    + removeDuplicateElements(): JsonArray
+}
+class JsonObject{
+    - properties: List<Pair<String, JsonValue>>
+    + constructor(map: Map<String, JsonValue>)
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+    + get(key: String): JsonValue
+    + getAll(key:String): List<JsonValue>
+    + addProperty(key: String, value: JsonValue): JsonObject
+    + filterObject(predicate: (String, JsonValue)->Boolean): JsonObject
+    + toMap(): Map<String, JsonValue>
+    + removeDuplicateKeys():JsonObject
+}
+class JsonString{
+    - val value: String
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+    + escapeString(s: String):String
+}
+class JsonNumber{
+    - value: Number
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+class JsonBoolean{
+    - value: Boolean
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+class JsonNull{
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+
+
+class JsonArrayTypeValidator
+class JsonObjectValidator
+class JsonModelTest
+class TestVisitor
+
+
+class ControllerRegistry
+class ControllerRegistry2
+
+
+class AppServer
+
+
+class JsonInferrer
+
+
+package "API" {
+  class UserController {
+    - list_user: List<User>
+    + demo(): List<Int>
+    + getAllUsers(): List<User>
+    + getUserStatusAtive(): JsonArray
+    + obj(): Pair<String, String>
+    + path(pathvar: String): String
+    + args(n: Int, text: String): Map<String, String>
+  }
+}
+@enduml

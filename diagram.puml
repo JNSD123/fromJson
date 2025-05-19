@@ -1,0 +1,115 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface JsonValue {
+    +accept(visitor: JsonVisitor)
+    +toJsonString(): String
+}
+
+class JsonArray {
+    - elements: MutableList<JsonValue>
+    +iterator(): Iterator<JsonValue>
+    +accept(visitor: JsonVisitor)
+    +toJsonString(): String
+    +get(index: Int): JsonValue
+    +addElmentArray(value: JsonValue)
+    +size: Int
+    +filterArray(value: (JsonValue) -> Boolean): JsonArray
+    +map(transform: (JsonValue) -> JsonValue): JsonArray
+    +removeDuplicateElements(): JsonArray
+}
+
+class JsonObject {
+    - properties: List<Pair<String, JsonValue>>
+    +get(key: String): JsonValue?
+    +getAll(key: String): List<JsonValue>
+    +addProperty(key: String, value: JsonValue): JsonObject
+    +filterObject(predicate: (String, JsonValue) -> Boolean): JsonObject
+    +toMap(): Map<String, JsonValue>
+    +removeDuplicateKeys(): JsonObject
+    +accept(visitor: JsonVisitor)
+    +toJsonString(): String
+}
+
+class JsonString {
+    - value: String
+    +accept(visitor: JsonVisitor)
+    +toJsonString(): String
+}
+
+class JsonNumber{
+    - value: Number
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+class JsonBoolean{
+    - value: Boolean
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+class JsonNull{
+    + accept(visitor: JsonVisitor)
+    + toJsonString(): String
+}
+
+interface JsonVisitor {
+    +visit(obj: JsonObject)
+    +visit(arr: JsonArray)
+    +visit(str: JsonString)
+    +visit(numb: JsonNumber)
+    +visit(bool: JsonBoolean)
+    +visit(nul: JsonNull)
+    +visitProperty(key: String, value: JsonValue)
+}
+
+class JsonInferrer {
+    +infer(obj: Any?): JsonValue
+}
+
+class JsonArrayTypeValidator {
+    - validationErros: MutableList<String>
+    - pathStack: MutableList<Int>
+    - visitedArrays: MutableSet<JsonArray>
+    + validateArrayTypeValidator(json: JsonValue): List<String>
+}
+
+class JsonObjectValidator {
+    - validationErrors: MutableList<String>
+    - keySet: MutableSet<String>
+    + validateObject(jsonValue: JsonValue): List<String>
+}
+
+
+
+' Relações
+JsonArray ..|> JsonValue
+JsonObject ..|> JsonValue
+JsonString ..|> JsonValue
+JsonNumber ..|> JsonValue
+JsonBoolean ..|> JsonValue
+JsonNull ..|> JsonValue
+
+JsonArray --> "1..*" JsonValue : elements
+JsonObject --> "*" JsonValue : properties
+JsonVisitor <.. JsonArray : uses
+JsonVisitor <.. JsonObject : uses
+JsonVisitor <.. JsonString : uses
+JsonVisitor <.. JsonNumber : uses
+JsonVisitor <.. JsonBoolean : uses
+JsonVisitor <.. JsonNull : uses
+
+
+
+JsonArrayTypeValidator ..|> JsonVisitor
+JsonObjectValidator ..|> JsonVisitor
+
+JsonArrayTypeValidator --> JsonArray
+JsonArrayTypeValidator --> JsonObject
+JsonObjectValidator --> JsonObject
+JsonObjectValidator --> JsonArray
+
+JsonInferrer --> JsonObject
+JsonInferrer --> JsonArray
+JsonInferrer --> JsonValue
+
+@enduml
