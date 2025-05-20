@@ -19,12 +19,12 @@ import kotlin.collections.mutableMapOf
 @RestController(path = "/api")
 class UserController {
     private val list_user = listOf(
-        User(name = "TESTE1", credits = 112, status = false),
-        User(name = "TESTE", credits = 11, status = true),
-        User(name = "PA", credits = 120, status = true),
-        User(name = "Admin", credits = 200, status = true),
-        User(name = "USER", credits = 50, status = true),
-        User(name = "USER BASIC", credits = 1, status = false)
+        User(id=1, name = "TESTE1", credits = 112, status = false),
+        User(id=2, name = "TESTE", credits = 11, status = true),
+        User(id=3, name = "PA", credits = 120, status = true),
+        User(id=4, name = "Admin", credits = 200, status = true),
+        User(id=5, name = "USER", credits = 50, status = true),
+        User(id=6, name = "USER BASIC", credits = 1, status = false)
     )
     /**
      * Endpoint GET "/api/ints"
@@ -55,6 +55,9 @@ class UserController {
         //println(result)
         return result
     }
+    /*@GetMapping("/users/{id}")
+    fun getUserById(@PathVariable id: Int): User? =
+        list_user.find { it.id == id }*/
     /**
      * Endpoint GET "/api/pair"
      * Retorna um par de strings como exemplo.
@@ -97,6 +100,7 @@ class UserController {
  * @property status Status ativo/inativo do usuário.
  */
 data class User(
+    val id: Int,
     val name: String,
     val credits: Int,
     val status: Boolean
