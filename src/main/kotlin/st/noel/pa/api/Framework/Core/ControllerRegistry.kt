@@ -114,6 +114,7 @@ object ControllerRegistry {
 
             val result = route.method.callBy(mapOf(route.method.parameters.first() to route.controller) + args)
             val jsonResult = JsonInferrer.infer(result)
+            println("DEBUG: VALOR: ${result} e o valor serializado ou inferido: ${jsonResult}")
             return jsonResult
         }
         return null

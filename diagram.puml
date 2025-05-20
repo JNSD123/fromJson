@@ -53,17 +53,19 @@ class JsonNull{
 }
 
 interface JsonVisitor {
-    +visit(obj: JsonObject)
-    +visit(arr: JsonArray)
-    +visit(str: JsonString)
-    +visit(numb: JsonNumber)
-    +visit(bool: JsonBoolean)
-    +visit(nul: JsonNull)
-    +visitProperty(key: String, value: JsonValue)
+    + visit(obj: JsonObject)
+    + visit(arr: JsonArray)
+    + visit(str: JsonString)
+    + visit(numb: JsonNumber)
+    + visit(bool: JsonBoolean)
+    + visit(nul: JsonNull)
+    + visitProperty(key: String, value: JsonValue)
 }
 
 class JsonInferrer {
-    +infer(obj: Any?): JsonValue
+    + infer(obj: Any?): JsonValue
+    - inferArray(list: List<*>): JsonArray
+    - inferMap(map: Map<*,*>): JsonObject
 }
 
 class JsonArrayTypeValidator {

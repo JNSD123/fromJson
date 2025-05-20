@@ -22,7 +22,7 @@ class UserController {
         User(id=1, name = "TESTE1", credits = 112, status = false),
         User(id=2, name = "TESTE", credits = 11, status = true),
         User(id=3, name = "PA", credits = 120, status = true),
-        User(id=4, name = "Admin", credits = 200, status = true),
+        User(id=3, name = "Admin", credits = 200, status = true),
         User(id=5, name = "USER", credits = 50, status = true),
         User(id=6, name = "USER BASIC", credits = 1, status = false)
     )
@@ -54,9 +54,17 @@ class UserController {
         val result = JsonInferrer.infer(status_ative) as JsonArray
         return result
     }
-    /*@GetMapping("/users/{id}")
+    @GetMapping("/users/{id}")
     fun getUserById(@PathVariable id: Int): User? =
-        list_user.find { it.id == id }*/
+        list_user.find { it.id == id }
+
+    /*
+       val rest = list_user.filter { it.id == id }
+       val res = JsonInferrer.infer(rest) as JsonArray
+       println("Valor : $res")
+      return res
+    */
+
     /**
      * Endpoint GET "/api/pair"
      * Retorna um par de strings como exemplo.
@@ -89,6 +97,10 @@ class UserController {
         @RequestParam n: Int,
         @RequestParam text: String
     ): Map<String, String> = mapOf(text to text.repeat(n))
+
+    @GetMapping("/users/search")
+    fun getUserByName(@RequestParam("name") name: String): List<User> =
+        list_user.filter { it.name.equals(name) }
 
 }
 /**
