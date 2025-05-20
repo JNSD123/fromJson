@@ -47,7 +47,7 @@ fromJson/
 │ └── JsonModelTest.kt
 │ └── TestVisitor.kt
 ```
-#Algumas caraterísticas do projeto
+# Algumas caraterísticas do projeto
 Durante as últimas semanas, seguimos um enunciado proposto pelo professor.
 A lista abaixo mostra os pontos que estão presentes e funcionais no nosso projeto:
 `fromJson` é um projeto para modelar e gerar representações gráficas de estruturas JSON, com suporte a geração de diagramas UML para visualização de modelos de dados utilizados em APIs REST.
