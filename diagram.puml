@@ -66,6 +66,7 @@ class JsonInferrer {
     + infer(obj: Any?): JsonValue
     - inferArray(list: List<*>): JsonArray
     - inferMap(map: Map<*,*>): JsonObject
+    - inferDataClass(obj: Any): JsonObject
 }
 
 class JsonArrayTypeValidator {
