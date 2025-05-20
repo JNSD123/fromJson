@@ -8,7 +8,7 @@ import st.noel.pa.api.Server.AppServer
 fun main() {
 
     ControllerRegistry.register(UserController())
-    val path = "/api/users/search"
+    /*val path = "/api/users/search"
     val queryParams = emptyMap<String, String>()
     val result = ControllerRegistry.resolveWithParams(path, queryParams)
     if (result != null) {
@@ -16,7 +16,7 @@ fun main() {
         //sendHttpResponse(200, json) // esta parte depende do teu motor HTTP
     } else {
         //sendHttpResponse(404, "Not Found")
-    }
+    }*/
     AppServer.start(8087)
 }
 

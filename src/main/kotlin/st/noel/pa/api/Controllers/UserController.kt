@@ -52,7 +52,6 @@ class UserController {
     fun getUserStatusAtive(): JsonArray{
         val status_ative = list_user.filter { it.status }
         val result = JsonInferrer.infer(status_ative) as JsonArray
-        //println(result)
         return result
     }
     /*@GetMapping("/users/{id}")
