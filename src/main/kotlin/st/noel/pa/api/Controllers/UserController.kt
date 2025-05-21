@@ -10,6 +10,7 @@ import org.example.st.noel.pa.api.Annotation.PathVariable
 import org.example.st.noel.pa.api.Annotation.RequestParam
 import org.example.st.noel.pa.api.Annotation.RestController
 import kotlin.collections.mutableMapOf
+import kotlin.text.equals
 
 /**
  * Controller responsável por fornecer endpoints a usuários e dados de exemplo.
@@ -50,21 +51,19 @@ class UserController {
      */
     @GetMapping("/users/ative")
     fun getUserStatusAtive(): JsonArray{
-        val status_ative = list_user.filter { it.status }
+        val status_ative = list_user.filter { it.status == true }
         val result = JsonInferrer.infer(status_ative) as JsonArray
         return result
     }
+
     @GetMapping("/users/{id}")
     fun getUserById(@PathVariable id: Int): User? =
         list_user.find { it.id == id }
 
-    /*
-       val rest = list_user.filter { it.id == id }
-       val res = JsonInferrer.infer(rest) as JsonArray
-       println("Valor : $res")
-      return res
-    */
 
+    @GetMapping("/users/search")
+    fun getUserByName(@RequestParam("name") name: String): List<User> =
+        list_user.filter { it.name.equals(name, ignoreCase = true) }
     /**
      * Endpoint GET "/api/pair"
      * Retorna um par de strings como exemplo.
@@ -97,10 +96,6 @@ class UserController {
         @RequestParam n: Int,
         @RequestParam text: String
     ): Map<String, String> = mapOf(text to text.repeat(n))
-
-    @GetMapping("/users/search")
-    fun getUserByName(@RequestParam("name") name: String): List<User> =
-        list_user.filter { it.name.equals(name) }
 
 }
 /**

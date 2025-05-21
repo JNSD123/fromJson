@@ -55,6 +55,7 @@ object ControllerRegistry {
                 routeMap.add(RegisteredRoute(fullPath, regex, paramNames, controller, method))
             }
         }
+        routeMap.sortWith(compareBy({ it.paramNames.isNotEmpty() }, { it.rawPath.length }))
     }
     /**
      * Converte um path com parâmetros entre chaves `{param}` para uma expressão regular,
@@ -114,7 +115,7 @@ object ControllerRegistry {
 
             val result = route.method.callBy(mapOf(route.method.parameters.first() to route.controller) + args)
             val jsonResult = JsonInferrer.infer(result)
-            println("DEBUG: VALOR: ${result} e o valor serializado ou inferido: ${jsonResult}")
+
             return jsonResult
         }
         return null

@@ -69,12 +69,13 @@ annotation PathVariable {
 
 ' Relações entre ControllerRegistry e UserController
 ControllerRegistry ..> UserController : register
-UserController ..> User : uses
-UserController ..> Wrapper : uses
+UserController ..>  User : uses
+UserController ..>  Wrapper : uses
 
 ' Relações entre ControllerRegistry e annotations
 ControllerRegistry ..> RestController : findsAnnotation
 ControllerRegistry ..> GetMapping : findsAnnotation
+ControllerRegistry --> RegisteredRoute : 1 → *
 UserController ..> RestController : annotated with
 UserController ..> GetMapping : annotated with
 UserController ..> RequestParam : annotated with
