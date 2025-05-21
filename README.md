@@ -143,8 +143,8 @@ plantuml diagram_http_get.puml
 
 Arquivos de exemplo:
 
-- `diagram_http_get.puml`
-- `diagram_json_model.puml`
+- `diagram_http_get.png`
+- `diagram_json_model.png`
 
 ## Nota técnica
 O servidor HTTP embutido é simples, ideal para testes e prototipagem.
