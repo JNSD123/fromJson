@@ -6,6 +6,7 @@ class ControllerRegistry {
     - routeMap: MutableList<RegisteredRoute>
     - RegisteredRoute
     + register(vararg controllers: Any)
+    + convertPathToRegex(path: String): Pair<Regex, List<String>>
     + resolveWithParams(path: String, queryParams: Map<String,String>): JsonValue?
 }
 

@@ -47,7 +47,7 @@ object ControllerRegistry {
         for (controller in controllers) {
             val kClass = controller::class
             val basePath = kClass.findAnnotation<RestController>()?.path?.trimEnd('/') ?: ""
-
+//api/user
             for (method in kClass.declaredMemberFunctions) {
                 val get = method.findAnnotation<GetMapping>() ?: continue
                 val fullPath = (basePath + "/" + get.path.trimStart('/')).replace("//", "/")
