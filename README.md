@@ -48,7 +48,7 @@ fromJson/
 │ └── TestVisitor.kt
 ```
 # Algumas caraterísticas do projeto
-Durante as últimas semanas, seguimos um enunciado proposto pelo professor.
+Para elaboração do projeto seguiu-se  enunciado proposto pelo professor.
 A lista abaixo mostra os pontos que estão presentes e funcionais no nosso projeto:
 `fromJson` é um projeto para modelar e gerar representações gráficas de estruturas JSON, com suporte a geração de diagramas UML para visualização de modelos de dados utilizados em APIs REST.
 
@@ -70,6 +70,7 @@ A lista abaixo mostra os pontos que estão presentes e funcionais no nosso proje
 ### 1. Clonar o repositório
 
 ```bash
+
 git clone https://github.com/seu-usuario/fromJson.git
 cd fromJson
 ```
@@ -90,6 +91,7 @@ o servidor será iniciado na porta 8087
 
 
 ## Exemplo de Controlador
+```
 @RestController(path ="/api")
 class UserController {
     
@@ -124,14 +126,19 @@ fun main() {
 ControllerRegistry.register(UserController())
 AppServer.start(8087)
 }
-
+```
 
 ### 4. Gerar diagramas PlantUML
 
 Execute os scripts ou comandos definidos para gerar os arquivos `.puml` e convertê-los em imagens `.png`:
 
 ```bash
+
+#UML do Modelos e Classes Fase 1 e 2
 plantuml diagram.puml
+#UML HTTP GET Fase 3
+plantuml diagram_http_get.puml
+
 ```
 
 
@@ -148,11 +155,13 @@ O mapeamento de rotas é feita via reflexão, respeitando as anotações definid
 
 ```
 fromJson/
-├── src/                   # Código fonte
-├── build.gradle.kts       # Script de build Gradle em Kotlin
-├── diagram*.puml          # Diagramas PlantUML
-├── diagram*.png           # Diagramas gerados
-├── README.md              # Este ficheiro
+├── src/                        # Código fonte
+├── build.gradle.kts            # Script de build Gradle em Kotlin
+├── diagram.puml                # Script diagramas PlantUML Modelos e Classes
+├── diagram_htt_get.puml        # Script diagramas PlantUML Modelos e Classes
+├── diagram_json_model.png      # Diagrama gerado dos Modelos e classes
+├── diagram_http_get.png        # Diagrama gerado fase 3 HTTP_GET
+├── README.md                   # Este ficheiro
 ```
 
 ## Licença
