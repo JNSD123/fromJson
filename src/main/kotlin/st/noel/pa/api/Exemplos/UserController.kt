@@ -1,15 +1,11 @@
-package st.noel.pa.api.Controllers
+package st.noel.pa.api.Exemplos
 
 import org.example.st.noel.pa.Inference.JsonInferrer
-import org.example.st.noel.pa.Interfaces.JsonValue
 import org.example.st.noel.pa.Models.JsonArray
-import org.example.st.noel.pa.Models.JsonObject
-import org.example.st.noel.pa.Models.JsonString
 import org.example.st.noel.pa.api.Annotation.GetMapping
 import org.example.st.noel.pa.api.Annotation.PathVariable
 import org.example.st.noel.pa.api.Annotation.RequestParam
 import org.example.st.noel.pa.api.Annotation.RestController
-import kotlin.collections.mutableMapOf
 import kotlin.text.equals
 
 /**

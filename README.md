@@ -9,44 +9,6 @@ envolvendo todos os seus tipos de valores: Objectos, Matrizes, Strings, Números
 Este projeto implementa uma framework leve em Kotlin baseada no padrão MVC. Suporta endpoints HTTP `GET`,
 anotações personalizadas (`@RestController`, `@GetMapping`, `@RequestParam`, `@PathVariable`) e serialização JSON personalizada.
 
-```    
-fromJson/
-└── st.noel.pa/
-├── api/
-│ ├── Annotation/
-│ │ ├── Column.kt
-│ │ ├── Entity.kt
-│ │ ├── GetMapping.kt
-│ │ ├── Ignore.kt
-│ │ ├── PathVariable.kt
-│ │ ├── RequestParam.kt
-│ │ └── RestController.kt
-│ ├── Controllers/
-│ │ └── UserController.kt
-│ ├── Framework.Core/
-│ │ └── ControllerRegistry.kt
-│ ├── Server/
-│ │ └── AppServer.kt
-├── Inference/
-│ └── JsonInferrer.kt # Conversão automática Kotlin → JSON
-├── Interfaces/
-│ └── JsonValue.kt
-│ └── JsonValue.kt
-├── Models/
-│ └── JsonArray.kt
-│ └── JsonBoolean.kt
-│ └── JsonNull.kt
-│ └── JsonNumber.kt
-│ └── JsonObject.kt
-│ └── JsonString.kt
-├── Validator/
-│ └── JsonArrayTypeValidator.kt
-│ └── JsonObjectValidator.kt
-└── Main.kt # Ponto de entrada do projeto HTTP GET
-└── srv/test/kotlin/
-│ └── JsonModelTest.kt
-│ └── TestVisitor.kt
-```
 # Algumas caraterísticas do projeto
 Para elaboração do projeto seguiu-se  enunciado proposto pelo professor.
 A lista abaixo mostra os pontos que estão presentes e funcionais no nosso projeto:
