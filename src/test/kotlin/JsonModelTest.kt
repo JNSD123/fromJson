@@ -102,7 +102,6 @@ class JsonModelTest {
         )
 
         val filtered = obj.filterObject { key, _ -> key != "a"}
-        //val expected = """{"b": 2, "c": 3, "d": "Teste"}"""
         val expected = JsonObject(
             mutableMapOf(
                 "b" to JsonNumber(2),
@@ -145,8 +144,6 @@ class JsonModelTest {
                 JsonString("filtro de Array na classe Modelo JsonArray")
             )
         )
-        println("Dados filtrado: $filtered")
-        println("Dado esperado: $expected")
         assertEquals(expected, filtered)
         println("valor experado: ${expected.toJsonString()}")
         println("valor filtrado: ${filtered.toJsonString()}")
@@ -186,8 +183,18 @@ class JsonModelTest {
         )
         val filtered = json.filterObject { key, value -> key == "data"}
         println(filtered.toJsonString())
-        val expected = """{"data": [1,1,"x",null]}"""
-        assertEquals(expected, filtered.toJsonString())
+        //"""{"data": [1,1,"x",null]}"""
+        val expected = JsonObject(
+            mutableMapOf(
+                "data" to JsonArray().apply {
+                    addElmentArray(JsonNumber(1))
+                    addElmentArray(JsonNumber(1))
+                    addElmentArray(JsonString("x"))
+                    addElmentArray(JsonNull)
+                }
+            )
+        )
+        assertEquals(expected, filtered)
         val error = visitor.validateObject(json)
         error.forEach {
             println(it.toInt().toString())

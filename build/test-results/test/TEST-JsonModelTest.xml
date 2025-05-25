@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JsonModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-16T14:26:41" hostname="LAPTOP-HJ7LS73J" time="0.057">
+<testsuite name="JsonModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-25T15:13:14" hostname="LAPTOP-HJ7LS73J" time="0.048">
   <properties/>
-  <testcase name="send_course_JsonValue()" classname="JsonModelTest" time="0.057"/>
-  <system-out><![CDATA[{"name": "PA", "credits": 6, "
- evaluation": [{"name": "quizzes", "percentage": 0.2, "mandatory": false, "type": "null"},{"name": "project", "percentage": 0.8, "mandatory": true, "type": "PROJECT"},{"name": "Java Developer", "percentage": 0.7, "mandatory": true, "type": "EXAM"},{"name": "Teste Kotlin", "percentage": 0.9, "mandatory": false, "type": "TEST"}]}
+  <testcase name="valid_JsonObject_errors()" classname="JsonModelTest" time="0.048"/>
+  <system-out><![CDATA[{"name": "Test", "age": "30", "active": true}
+[]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
