@@ -30,7 +30,7 @@ A lista abaixo mostra os pontos que estão presentes e funcionais no nosso proje
 ## Como utilizar
 
 ### 1. Clonar o repositório
-
+ 
 ```bash
 
 git clone https://github.com/seu-usuario/fromJson.git

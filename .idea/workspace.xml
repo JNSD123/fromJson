@@ -7,8 +7,6 @@
     <list default="true" id="94627e78-6538-4a56-a0c0-62b55ff83472" name="Changes" comment="Merge remote-tracking branch 'origin/master' arquivo de exemplo diagram_htt_get e json_model.png">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/st/noel/pa/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/st/noel/pa/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/st/noel/pa/api/Controllers/UserController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/st/noel/pa/api/Exemplos/UserController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -489,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747850705981</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Merge remote-tracking branch 'origin/master' arquivo de exemplo diagram_htt_get e json_model.png">
+      <option name="closed" value="true" />
+      <created>1748184316356</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1748184316356</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
